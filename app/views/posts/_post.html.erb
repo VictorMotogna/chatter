@@ -14,7 +14,4 @@
               data: {reflex: "click->PostsReflex#like", id: post.id} do %>
     <%= tag.span post.likes_count, id: dom_id(post, "likes") %> likes
   <% end %>
-
-  <%= render partial: "form_comm", locals: { post_id: post.id } %>
-  <%= render partial: "comments", collection: post.comments, as: :comment %>
 </div>

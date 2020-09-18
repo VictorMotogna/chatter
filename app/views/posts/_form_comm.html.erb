@@ -1,4 +1,0 @@
-<%= form_for @comment, remote: true, url: {action: "add_comment", params: {comment: @comment, post_id: post_id}}, html: {class: "mt-8 block w-full"} do |f| %>
-  <%= f.text_area :body, id: "new-comment-body", rows: 1, placeholder: "Add comment..", class: "block border rounded w-full p-2" %>
-  <%= f.submit "Comment", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded" %>
-<% end %>
