@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::PostsController < ApplicationController
-  # include CableReady::Broadcaster
+  include CableReady::Broadcaster
 
   def index
     @posts = Post.order(created_at: :desc).limit(10)
@@ -11,14 +11,8 @@ class Api::V1::PostsController < ApplicationController
   def create
     post = Post.create(post_params)
 
-    # cable_ready['feed'].insert_adjacent_html(
-    #   selector: '#feed',
-    #   position: 'afterbegin',
-    #   html: render_to_string(partial: 'posts/post', locals: { post: post })
-    # )
-    # cable_ready.broadcast
+    ActionCable.server.broadcast('feed', post: post)
 
-    # redirect_to posts_path
     render json: post
   end
 
