@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :posts, only: %i[index create]
+      resources :posts, only: %i[index create] do
+        post :like, on: :member
+        post :repost, on: :member
+      end
     end
   end
 end
