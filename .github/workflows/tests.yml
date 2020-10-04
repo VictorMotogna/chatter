@@ -1,9 +1,9 @@
-name: Rspec
+name: Tests
 on: [push, pull_request]
 
 jobs:
   verify:
-    name: Rspec
+    name: Tests
     runs-on: ubuntu-latest
 
     services:
@@ -33,6 +33,7 @@ jobs:
         env:
           PGHOST: localhost
           PGUSER: postgres
+          PGPASSWORD: postgres
           RAILS_ENV: test
         run: |
           bundle exec rails db:create db:migrate
@@ -41,5 +42,6 @@ jobs:
         env:
           PGHOST: localhost
           PGUSER: postgres
+          PGPASSWORD: postgres
           RAILS_ENV: test
         run: bundle exec rails test
