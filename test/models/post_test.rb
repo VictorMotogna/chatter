@@ -10,4 +10,9 @@ class PostTest < ActiveSupport::TestCase
     post = Post.create(body: nil)
     assert post.invalid?
   end
+
+  test "valid post with username" do
+    post = Post.create(body: 'new post', username: 'user')
+    assert post.valid?
+  end
 end
